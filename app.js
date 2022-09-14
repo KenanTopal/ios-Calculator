@@ -96,7 +96,10 @@ function mathFunction() {
 equalButton.addEventListener('click', (e) => {
   result = 0;
   mathFunction();
+  
   currentOperandTextElement.textContent = result;
+  copTE = currentOperandTextElement.textContent
+  
   previousOperandTextElement.textContent = '';
 
 
