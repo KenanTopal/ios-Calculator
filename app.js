@@ -21,80 +21,84 @@ const mpButton = document.querySelector('.mp');
 const modulusButton = document.querySelector('.modulus');
 const previousOperandTextElement = document.querySelector('.previous');
 const currentOperandTextElement = document.querySelector('.current');
-const numbersArr = [number1,number2,number3,number4,number5,number6,number7,number8,number9,number0]
+const numbersArr = [number1, number2, number3, number4, number5, number6, number7, number8, number9, number0]
 let haveDot = false;
+let operation
 
 
 
-allClearButton.addEventListener('click', function(e){
+
+allClearButton.addEventListener('click', function (e) {
   previousOperandTextElement.textContent = '';
   currentOperandTextElement.textContent = '0';
   haveDot = false;
-  
+
 })
 
-numbersButton.forEach(number =>{
-  number.addEventListener('click', (e)=>{
-    if(currentOperandTextElement.textContent == '0'){
+numbersButton.forEach(number => {
+  number.addEventListener('click', (e) => {
+    if (currentOperandTextElement.textContent == '0') {
       currentOperandTextElement.textContent = '';
     }
 
-    if(e.target.innerText == '.' && !haveDot){
+    if (e.target.innerText == '.' && !haveDot) {
       haveDot = true;
-    } else if(e.target.innerText == '.' && haveDot){
+    } else if (e.target.innerText == '.' && haveDot) {
       return;
     }
     currentOperandTextElement.textContent += e.target.innerText.toString();
-    })
-})
-
-
-operationButtons.forEach(oper =>{
-  oper.addEventListener('click', (e)=>{
-    previousOperandTextElement.textContent = currentOperandTextElement.textContent;
-    currentOperandTextElement.textContent = '';
-    haveDot = false;
-    /* const task = e.target;
-    task.style.backgroundColor = 'white';
-    task.style.color = 'rgb(189, 141, 52)'; */
-    
   })
 })
 
-equalButton.addEventListener('click', function(){
+
+operationButtons.forEach(oper => {
+  oper.addEventListener('click', (e) => {
+    previousOperandTextElement.textContent = currentOperandTextElement.textContent;
+    currentOperandTextElement.textContent = '';
+    haveDot = false;
+    operation = e.target.textContent
+    /* const task = e.target;
+    task.style.backgroundColor = 'white';
+    task.style.color = 'rgb(189, 141, 52)'; */
+
+  })
+})
+
+equalButton.addEventListener('click', function () {
 
 })
 
 
-function mathFunction(){
-    
-    const prev = Number(previousOperandTextElement.textContent)
-    const current = Number(currentOperandTextElement.textContent)
-     switch(operationButtons.innerHTML){
-      case '+': 
-        return result = prev + current
+function mathFunction() {
+  
+  const prev = Number(previousOperandTextElement.textContent)
+  const current = Number(currentOperandTextElement.textContent)
+  switch (operation) {
+    case '+':
+     result = (prev + current)
       break;
-      case '/':
-        return result = prev / current
+    case '/':
+     result = (prev / current)
       break;
-      case 'x':
-        return result = prev * current
+    case 'x':
+     result = (prev * current)
       break;
-      case '-':
-        return result = prev - current
+    case '-':
+     result = (prev - current)
       break;
-      default:
-        return
-    } 
-    /* currentOperandTextElement.textContent = result;
-    previousOperandTextElement.textContent = ''; */
-    
+    default:
+      return
+  }
+  
+
 }
 
-equalButton.addEventListener('click', (e)=> {
-      let result = 0;
-      mathFunction();
-      currentOperandTextElement.textContent = result;
-      previousOperandTextElement.textContent = '';
-      
+equalButton.addEventListener('click', (e) => {
+  result = 0;
+  mathFunction();
+  currentOperandTextElement.textContent = result;
+  previousOperandTextElement.textContent = '';
+
+
+
 })
