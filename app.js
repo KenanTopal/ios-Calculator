@@ -57,9 +57,9 @@ operationButtons.forEach(oper => {
     currentOperandTextElement.textContent = '';
     haveDot = false;
     operation = e.target.textContent
-    /* const task = e.target;
+    const task = e.target;
     task.style.backgroundColor = 'white';
-    task.style.color = 'rgb(189, 141, 52)'; */
+    task.style.color = 'rgb(189, 141, 52)'; 
 
   })
 })
